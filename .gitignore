@@ -1,0 +1,13 @@
+nvim/plugged/*
+!nvim/plugged/dummyfile
+nvim/undodir/*
+!nvim/undodir/dummyfile
+nvim/backup/*
+!nvim/backup/dummyfile
+nvim/autoload/*
+!nvim/autoload/dummyfile
+tmux/plugins/*
+!tmux/plugins/dummyfile
+
+
+
