@@ -73,6 +73,47 @@ alias inputserver="synergys -c ~/dev/configs/synergy/synergy.conf"
 alias tdown="wget -P tmp"
 
 function diary() {
-  nvim ~/diary/$1-$(date +%Y-%m-%d).md
+  if [ -z $1 ]
+  then
+    echo "Diary not found"
+    exit 1
+  fi
+  if [ -z $2 ]
+  then
+    nvim ~/diary/$1-$(date +%Y-%m-%d).md
+  else
+    case "$2" in
+    ls)
+      ls ~/diary/$1-*.md
+    ;;
+    day)
+      nvim ~/diary/$1-$3.md
+    ;;
+    *)
+      echo "Invalid option"
+    ;;
+    esac
+  fi
 }
-alias diary="diary"
+
+alias vv="v -S .vimsession"
+alias torr="transmission-remote-cli"
+
+alias ttls="task list"
+alias ttry="task ready"
+alias ttad="task add"
+alias ttmd="task modify"
+alias ttnx="task next"
+alias ttst="task start"
+alias ttdn="task done"
+alias tt="task"
+
+function ttalldone() {
+  for x in $( ttnx | ack "P?D -" | awk '{print $1}' )
+  do
+    ttdn $x
+  done
+}
+alias macfs="sshfs mac:Desktop/dev mac"
+alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
+
