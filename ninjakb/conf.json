@@ -2,37 +2,37 @@
   "device": "/dev/ttyACM0",
   "layers":[
     {
-      "name": "commands",
+      "name": "commands" ,
       "left": [
-        "F1"       , "F2"    , "F3"   , "F4" , "F5" , "F6" ,
-        ""         , ""      , "MU"   , ""   , ""   , ""   ,
-        "CAPSLOCK" , "ML"    , "MD"   , "MR" , ""   , ""   ,
-        "LSHIFT"   , ""      , ""     , ""   , ""   , ""   ,
-        "LCTRL"    , "LMETA" , "LALT" , ""   , "LEFTBRACE"   , "RIGHTBRACE"
-      ]            ,
+        "F1"             , "F2"    , "F3"    , "F4"        , "F5"         , "F6"         ,
+        ""               , ""      , "MU"    , ""          , ""           , ""           ,
+        "CAPSLOCK"       , "ML"    , "MD"    , "MR"        , ""           , ""           ,
+        "LSHIFT"         , ""      , ""      , ""          , ""           , "BKSP"       ,
+        "LCTRL"          , "LMETA" , "LALT"  , ""          , "LEFTBRACE"  , "RIGHTBRACE"
+      ]                  ,
       "right": [
-        "F7"   , "F8"   , "F9"    , "F10" , "F11" , "F12"      ,
-        ""     , "UP"   , ""      , ""    , ""    , ""         ,
-        "LEFT" , "DOWN" , "RIGHT" , ""    , ""    , "DELETE"   ,
-        ""     , ""     , ""      , ""    , ""    , "PAGEDOWN" ,
-        "CMD"  , ""     , ""      , ""    , ""    , "PAGEUP"
+        "F7"             , "F8"    , "F9"    , "F10"       , "F11"        , "F12"        ,
+        "HOME"           , "UP"    , "END"   , ""          , ""           , ""           ,
+        "LEFT"           , "DOWN"  , "RIGHT" , ""          , ""           , "DELETE"     ,
+        "BACKSPACE"      , ""      , ""      , ""          , ""           , "PAGEDOWN"   ,
+        "CMD"            , ""      , ""      , ""          , ""           , "PAGEUP"
       ]
-    },
+    }                    ,
     {
-      "name": "standard",
+      "name": "standard" ,
       "left": [
-        "ESC"    , "1"     , "2"     , "3"   , "4"         , "5"          ,
-        "TAB"    , "Q"     , "W"     , "E"   , "R"         , "T"          ,
-        "GRAVE"  , "A"     , "S"     , "D"   , "F"         , "G"          ,
-        "LSHIFT" , "Z"     , "X"     , "C"   , "V"         , "B"          ,
-        "LCTRL"  , "LMETA" , "LALT"  , "CAPSLOCK"    , "SPACE"     , "BACKSLASH"
-      ]          ,
+        "ESC"            , "1"     , "2"     , "3"         , "4"          , "5"          ,
+        "TAB"            , "Q"     , "W"     , "E"         , "R"          , "T"          ,
+        "GRAVE"          , "A"     , "S"     , "D"         , "F"          , "G"          ,
+        "LSHIFT"         , "Z"     , "X"     , "C"         , "V"          , "B"          ,
+        "LCTRL"          , "LMETA" , "LALT"  , "CAPSLOCK"  , "SPACE"      , "BACKSLASH"
+      ]                  ,
       "right": [
-        "6"      , "7"     , "8"     , "9"   , "0"         , "EQUAL"      ,
-        "Y"      , "U"     , "I"     , "O"   , "P"         , "APOSTROPHE" ,
-        "H"      , "J"     , "K"     , "L"   , "SEMICOLON" , "BKSP"       ,
-        "N"      , "M"     , "COMMA" , "DOT" , "SLASH"     , "RSHIFT"     ,
-        "CMD"    , "ENTER" , "MINUS" , ""    , "HOME"      , "END"
+        "6"              , "7"     , "8"     , "9"         , "0"          , "EQUAL"      ,
+        "Y"              , "U"     , "I"     , "O"         , "P"          , "BKSP"       ,
+        "H"              , "J"     , "K"     , "L"         , "SEMICOLON"  , "APOSTROPHE" ,
+        "N"              , "M"     , "COMMA" , "DOT"       , "SLASH"      , "RSHIFT"     ,
+        "CMD"            , "ENTER" , "MINUS" , "LEFTBRACE" , "RIGHTBRACE" , "RALT"
       ]
     }
   ]
