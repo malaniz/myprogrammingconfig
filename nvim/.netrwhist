@@ -1,5 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/malaniz/bin'
-let g:netrw_dirhist_2='/home/malaniz/tmp'
-let g:netrw_dirhist_3='/home/malaniz/dev/casecommons/cbp-undercase/src/components/CcCheckbox'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/malaniz/dev/moz/ballard/app/react'
+let g:netrw_dirhist_2='/home/malaniz/dev/moz/kingcounty/lib/scripts'
+let g:netrw_dirhist_3='/home/malaniz/dev/moz/fremont/lib/push_engines'
+let g:netrw_dirhist_4='/home/malaniz/dev/moz/fremont/lib/engines/base'
+let g:netrw_dirhist_5='/home/malaniz/dev/moz/fremont/lib/engines/ca'
+let g:netrw_dirhist_6='/home/malaniz/dev/moz/fremont/lib/engines/base'
+let g:netrw_dirhist_7='/home/malaniz/dev/moz/ballard/app/react/components'
+let g:netrw_dirhist_8='/home/malaniz/dev/moz/ballard/app/react/components/accuracy'

@@ -3,6 +3,7 @@ alias pomstart="thyme -d"
 alias pombreak="thyme -b"
 alias enkb='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
 alias v=nvim
+alias vdirty='nvim $(git diff --name-only)'
 alias ll=ls++
 alias o=xdg-open
 alias x=dtrx
@@ -35,15 +36,49 @@ alias penoff="xinput disable 16"
 alias penoon="xinput enable 16"
 
 #git aliasses
+alias gadd="git add"
 alias gdel-all-branchs='git branch --merged | egrep -v "(^\*|master|develop)" | xargs git branch -d'
 alias gcam="git commit -am"
+alias gcmm="git commit -m"
 alias gall='git log --decorate --stat --graph --pretty=format:"%d %Cgreen%h%Creset (%ar - %Cred%an%Creset), %s%n"'
 alias gst='git status'
 alias gdiff='git diff'
 alias gpush='git push origin $(git symbolic-ref --short -q HEAD)'
 alias gpull='git pull origin $(git symbolic-ref --short -q HEAD)'
 alias glog='git log --graph --all --decorate --oneline'
+alias gcb='git checkout -b'
+function mozdraftbranch () {
+  git checkout -b "DRAFT_$1"
+}
 
+function mozdraftcleaning () {
+  CURRENT_BRANCH=$(git symbolic-ref --short -q HEAD)
+  echo " - Updating master "
+  git checkout master
+  git pull origin master
+  echo " - Rebasing agains master $CURRENT_BRANCH branch"
+  git checkout $CURRENT_BRANCH
+  git rebase master
+}
+
+function mozdraft2pr () {
+  DRAFT_BRANCH=$(git symbolic-ref --short -q HEAD)
+  PR_BRANCH=$(echo $DRAFT_BRANCH | sed 's/DRAFT_//g')
+  echo " - Copying all the changed files to tmp"
+  mkdir "/tmp/$CURRENT_BRANCH"
+  for x in $(git diff master --name-only)
+  do
+    cp -v --parents $x "/tmp/$CURRENT_BRANCH"
+  done
+
+  echo " - Generating new PR Branch: $PR_BRANCH from master"
+  git checkout master
+  git checkout -b $PR_BRANCH
+  echo " - Copying the changes to $PR_BRANCH"
+  cp -v "/tmp/$CURRENT_BRANCH/*" .
+  echo " - Done! "
+  echo " Now you need to add your changes to individual commits"
+}
 
 alias mutt-gmail='LOCAL_CONFIG=gmail /usr/bin/mutt'
 alias mutt-hack='LOCAL_CONFIG=hack /usr/bin/mutt'
@@ -53,24 +88,15 @@ alias mutt='mairix; mutt-gmail'
 alias vv="vim -S .vimsession"
 alias torr="transmission-remote-cli"
 
-alias tls="task list"
-alias try="task ready"
-alias tad="task add"
-alias tmd="task modify"
-alias tnx="task next"
-alias tst="task start"
-alias tdn="task done"
-alias t="task"
-
 alias netup="sudo dhcpcd enp0s20u1u2"
-alias macfs="sshfs mac:Desktop/dev mac"
+alias macfs="sshfs mac:dev ~/mac"
 alias smartbell='ssh -t mac "cd Desktop/dev/smartbell; zsh"'
 alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
 alias fontplus='echo -e "\033]710;xft:mono:medium:size=22\033\\"'
 alias fontnormal="echo -e '\033]710;-gohu-gohufont-medium-r-normal--9-120-72-72-c-60-iso10646-1\033\\'"
 
 alias inputserver="synergys -c ~/dev/configs/synergy/synergy.conf"
-alias tdown="wget -P tmp"
+alias tdown="wget -P ~/tmp"
 
 function diary() {
   if [ -z $1 ]
@@ -108,12 +134,25 @@ alias ttst="task start"
 alias ttdn="task done"
 alias tt="task"
 
+function ttpm() {
+  tt append $1 +$2pom
+}
+
 function ttalldone() {
   for x in $( ttnx | ack "P?D -" | awk '{print $1}' )
   do
     ttdn $x
   done
 }
-alias macfs="sshfs mac:Desktop/dev mac"
 alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
 
+#moz aliases
+alias mozdate='TZ=US/Pacific date'
+
+function mozremote() {
+  ssh mozdev "source ~/.bash_profile; $1"
+}
+
+
+alias pl9deploy='git push -f pl9 $(git symbolic-ref --short -q HEAD):master'
+alias kb='cat .ninjakb/conf.json'

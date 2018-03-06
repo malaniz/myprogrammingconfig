@@ -1,4 +1,12 @@
 call plug#begin()
+
+"taskwiki
+Plug 'tbabej/taskwiki'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'majutsushi/tagbar'
+Plug 'farseer90718/vim-taskwarrior'
+
+
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
@@ -25,7 +33,69 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 Plug 'wavded/vim-stylus'
 
+" coffescript
+Plug 'mtscout6/vim-cjsx'
+Plug 'kchmck/vim-coffee-script'
+Plug 'godlygeek/tabular'
+
 call plug#end()
+
+" sql for moz
+function! ExeSql()
+  let g:sqlquery = @q
+  if g:sqlquery == ""
+    echo "no sql to execute"
+    return 0
+  endif
+
+  call writefile(split(g:sqlquery, "\n"), "/tmp/sqltmp")
+
+  if exists("g:my_run_buffer")
+    set swb=usetab
+    exec ":rightbelow sbuf " . g:my_run_buffer
+  else
+    bo new
+    set buftype=nofile
+    let g:my_run_buffer = bufnr("%")
+  endif
+  let mycmd = "%! cat /tmp/sqltmp | sql 2>&1 | grep -v Warning"
+  exec mycmd
+endfunction
+
+" repl for moz
+function! ExeRepl()
+  let g:sqlquery = @q
+  if g:sqlquery == ""
+    echo "no repl to execute"
+    return 0
+  endif
+
+  call writefile(substitute(g:sqlquery, "\n", "", ""), "/tmp/reqltmp")
+
+  if exists("g:my_run_buffer")
+    set swb=usetab
+    exec ":rightbelow sbuf " . g:my_run_buffer
+  else
+    bo new
+    set buftype=nofile
+    let g:my_run_buffer = bufnr("%")
+  endif
+  let mycmd = "%! cd /home/malaniz/dev/moz/downtown/; coffee src/rethinkstream.coffee $(cat /tmp/reqltmp)"
+  exec mycmd
+endfunction
+
+
+
+" CoffeeScript settings
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+autocmd FileType litcoffee runtime ftplugin/coffee.vim
+let coffee_lint_options = '-f ~/.moz/coffeelint.json'
+
+function! LintCoffee()
+ :CoffeeLint! | cwindow
+endfunction
+
+autocmd BufWritePost *.coffee call LintCoffee()
 
 " CtrlP
 let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
@@ -115,11 +185,6 @@ let g:airline#extensions#whitespace#enabled = 0
 "         \ 'y': '%b %d',
 "         \ 'z': '%R'}
 "
-"
-"
-"
-
-
 
 
 " map Leader
@@ -130,6 +195,11 @@ let mapleader = " "
 " in-line scrolling
 nmap <Leader>j gj
 nmap <Leader>k gk
+
+
+"sql
+map <Leader>ss "qy:call ExeSql()<CR>
+map <Leader>rdb "qy:call ExeRepl()<CR>
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -162,11 +232,6 @@ nnoremap <Leader>pr :CtrlPMRUFiles<CR>
 nnoremap <Leader>pb :CtrlPBuffer<CR>
 
 
-
-
-
-
-
 " clipboard
 set clipboard=unnamedplus
 set go+=a
@@ -183,5 +248,4 @@ vmap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
 
 " my maps
 nmap ; :
-
 
