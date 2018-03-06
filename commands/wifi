@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Conecting to $1"
+sudo ifconfig wlp3s0 up
+sudo wpa_supplicant -c ~/.wifi/lareinabatata99 -i wlp3s0 -Dnl80211,wext -f ~/.wifi/lareinabatata99.log &!
+sudo dhcpcd wlp3s0 >> ~/.wifi/lareinabatata99.log
+echo "Done"
+

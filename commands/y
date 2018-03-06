@@ -1,0 +1,17 @@
+#!/bin/bash
+
+C=0
+while [ 1 ]
+do
+  xdotool mousemove_relative --sync --polar 0 1
+  sleep 1.23   
+  xdotool mousemove_relative --sync --polar 180 1
+  sleep 1.17
+  let C=$C+1
+  if [ $C -gt 20 ] 
+  then
+    tmux swap-pane -s :+.top \; rotate-window -Ut :+
+    let C=0
+  fi
+done
+

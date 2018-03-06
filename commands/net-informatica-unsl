@@ -1,0 +1,8 @@
+sudo iwconfig wlp2s0 essid informatica
+sudo ifconfig wlp2s0 10.1.1.111
+sudo ip route add default via 10.1.1.1
+sudo cat >> /etc/resolv.conf < EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+

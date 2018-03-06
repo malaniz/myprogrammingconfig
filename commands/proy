@@ -1,0 +1,171 @@
+#!/bin/bash
+
+USER="dev"
+#SERVER="$USER@sheldom"
+SERVER="stark"
+RMTDIR_GIT="/home/$USER/git"
+RMTDIR_WEB="/home/$USER/www"
+OPERATION="$1"
+
+function install {
+  npm install -g yo grunt-cli bower generator-angular nodemon express
+}
+
+function create_remote_repo {
+  ssh $SERVER "mkdir $RMTDIR_GIT/$1.git"
+  ssh $SERVER "git init --bare $RMTDIR_GIT/$1.git"
+  ssh $SERVER "cat > $RMTDIR_GIT/$1.git/hooks/post-receive <<EOL
+GIT_WORK_TREE=$RMTDIR_WEB/$1 git checkout -f
+EOL
+"
+  ssh $SERVER "chmod +x $RMTDIR_GIT/$1.git/hooks/post-receive"
+  ssh $SERVER "mkdir $RMTDIR_WEB/$1"
+}
+
+function create_local_repo {
+  git init .
+  echo "README" > readme.md
+  cat > .gitignore <<EOL
+logs
+*.log
+pids
+*.pid
+*.seed
+.grunt
+build/Release
+node_modules
+mongodb
+.*.sw?
+.~*
+EOL
+
+  git add .
+  git commit -am "Initial repo: Stage 0"
+  git remote add web ssh://$SERVER/$RMTDIR_GIT/$1.git
+  git push web +master:refs/heads/master
+}
+
+
+function create_webapp {
+  yo angular
+  cat > .bowerrc <<EOL
+{
+  "directory": "app/bower_components",
+  "json": "bower.json"
+}
+EOL
+  bower install angular-bootstrap --save
+  npm install karma-jasmin --save-dev
+  npm install karma-chrome-launcher --save-dev
+
+  echo << EOL
+
+REMEMBER
+========
+- Fix your app/scripts/app.js including 'ui.bootstrap' as dependency.
+- grunt serve (for server)
+- grunt test  (for jasmine testing)
+
+EOL
+}
+
+function create_new_web_repo {
+  echo Using $SERVER as web server
+  echo Creating Repositorie: $1
+
+  echo Setting remote 
+  create_remote_repo $1
+
+  if [ "$(ls -lA $PWD | wc -l)" -eq 0 ]; then
+    echo Setting $PWD as local repo 
+    create_webapp
+    create_local_repo $1
+  else
+    if [ -d ".git" ]; then
+      echo GIT repo founded in $PWD 
+      echo Setting a new remote repo
+      git remote add web ssh://$SERVER/$RMTDIR_GIT/$1.git
+      git push web +master:refs/heads/master
+    else 
+      if [ -d $1 ]; then
+        echo "Please change the name of the app, or remove the local folder $1"
+      else
+        echo Creating local folder and git repo
+        mkdir $1;cd $1
+        create_webapp 
+        create_local_repo $1 
+      fi
+      return
+    fi
+  fi
+
+  #ssh $SERVER "cd $RMTDIR_WEB/$1; npm install"
+  echo "Your new repo is ready for fun"
+  echo 
+  echo "Cheers"
+  exit
+}
+
+function delete_new_repo {
+  echo "Removing remote repo and server production app"
+  ssh $SERVER rm -r $RMTDIR_GIT/$1.git
+  ssh $SERVER rm -r $RMTDIR_WEB/$1
+  exit
+}
+
+function create_new_repo {
+  echo "Creating the new webapp with Yeoman"
+
+
+  echo Using $SERVER as web server
+  echo Creating Repositorie: $1
+
+  echo Setting remote 
+  create_remote_repo $1
+
+  if [ "$(ls -lA $PWD | wc -l)" -eq 0 ]; then
+    echo Setting $PWD as local repo 
+    create_local_repo
+  else
+    if [ -d ".git" ]; then
+      echo GIT repo founded in $PWD 
+      echo Setting a new remote repo
+      git remote add web ssh://$SERVER/$RMTDIR_GIT/$1.git
+      git push web +master:refs/heads/master
+    else 
+      if [ -d $1 ]; then
+        echo "Please change the name of the app, or remove the local folder $1"
+      else
+        echo Creating local folder and git repo
+        mkdir $1;cd $1
+        create_local_repo $1 
+      fi
+      return
+    fi
+  fi
+
+  echo "Your new repo is ready for fun"
+  echo 
+  echo "Cheers"
+  exit
+
+}
+
+
+case $OPERATION in
+  new)
+    create_new_repo $2
+    ;;
+  rm)
+    delete_new_repo $2
+    ;;
+  web)
+    create_new_web_repo $2
+    ;;
+  
+  *)
+    echo "Usage: proy [new|rm|web] project_name"
+    ;;
+esac
+
+

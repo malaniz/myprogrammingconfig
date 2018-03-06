@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ip_array=$(ip addr | grep "inet " | awk '{ s = $2; gsub(/\/..?/,"" ,s); print s }')
+
+res=0
+for x in $ip_array
+do 
+  if [[ $x != '127.0.0.1' ]] 
+  then
+    echo 1
+    exit
+  fi 
+done
+echo $res 
+

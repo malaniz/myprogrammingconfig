@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xbacklight -set 10
+sudo rfkill block bluetooth
+sudo rfkill block 0
+sudo ftw bat
+echo 'silent' | sudo tee /sys/devices/platform/sony-laptop/thermal_control 
+
+

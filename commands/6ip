@@ -1,0 +1,4 @@
+#/bin/bash
+AICCUPATH=$HOME/.aiccu
+
+sudo aiccu start $AICCUPATH/config &>> $AICCUPATH/log &

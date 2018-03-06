@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while [ 1 ]
+do
+  xdotool mousemove_relative --sync --polar 0 1
+  sleep $(python2 -c "import random; print random.uniform(1,2)")
+  xdotool mousemove_relative --sync --polar 180 1
+  sleep $(python2 -c "import random; print random.uniform(1,2)")
+done
+

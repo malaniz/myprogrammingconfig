@@ -1,0 +1,11 @@
+
+#!/bin/bash
+DATE=$(/bin/date +%Y%m%d%H%M%S)
+RSYNC=/usr/bin/rsync
+BASE=/mnt/externalhd
+TARGET=$BASE/daily
+
+$RSYNC -av --exclude $TARGET --exclude-from=/etc/backup/rsync.exclude --link-dest=$TARGET/latest/ / $TARGET/$DATE/
+touch $TARGET/$DATE/
+rm $TARGET/latest
+ln -s $TARGET/$DATE $TARGET/latest

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+termite -c /home/malaniz/.config/termite/config2 &!
+
+

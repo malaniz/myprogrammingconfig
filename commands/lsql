@@ -1,0 +1,2 @@
+#!/bin/bash
+mysql -h 172.17.0.1 -AD parking -u root -p1234
