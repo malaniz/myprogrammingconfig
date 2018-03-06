@@ -13,8 +13,8 @@
       "right": [
         "F7"             , "F8"    , "F9"    , "F10"       , "F11"        , "F12"        ,
         "HOME"           , "UP"    , "END"   , ""          , ""           , ""           ,
-        "LEFT"           , "DOWN"  , "RIGHT" , ""          , ""           , "DELETE"     ,
-        "BACKSPACE"      , ""      , ""      , ""          , ""           , "PAGEDOWN"   ,
+        "LEFT"           , "DOWN"  , "RIGHT" , ""          , ""           , ""           ,
+        "DELETE"         , ""      , ""      , ""          , ""           , "PAGEDOWN"   ,
         "CMD"            , ""      , ""      , ""          , ""           , "PAGEUP"
       ]
     }                    ,
