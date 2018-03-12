@@ -5,8 +5,8 @@
       "name": "commands" ,
       "left": [
         "F1"             , "F2"    , "F3"    , "F4"        , "F5"         , "F6"         ,
-        ""               , ""      , "MU"    , ""          , ""           , ""           ,
-        "CAPSLOCK"       , "ML"    , "MD"    , "MR"        , ""           , ""           ,
+        ""               , "MB1"   , "MU"    , "MB2"       , "MB3"        , ""           ,
+        "CAPSLOCK"       , "ML"    , "MD"    , "MR"        , "MB4"        , "MB5"        ,
         "LSHIFT"         , ""      , ""      , ""          , ""           , "BKSP"       ,
         "LCTRL"          , "LMETA" , "LALT"  , ""          , "LEFTBRACE"  , "RIGHTBRACE"
       ]                  ,
@@ -25,12 +25,12 @@
         "TAB"            , "Q"     , "W"     , "E"         , "R"          , "T"          ,
         "GRAVE"          , "A"     , "S"     , "D"         , "F"          , "G"          ,
         "LSHIFT"         , "Z"     , "X"     , "C"         , "V"          , "B"          ,
-        "LCTRL"          , "LMETA" , "LALT"  , "CAPSLOCK"  , "SPACE"      , "BACKSLASH"
+        "LCTRL"          , "LMETA" , "LALT"  , "CAPSLOCK"  , "SPACE"      , "SEMICOLON"
       ]                  ,
       "right": [
         "6"              , "7"     , "8"     , "9"         , "0"          , "EQUAL"      ,
-        "Y"              , "U"     , "I"     , "O"         , "P"          , "BKSP"       ,
-        "H"              , "J"     , "K"     , "L"         , "SEMICOLON"  , "APOSTROPHE" ,
+        "Y"              , "U"     , "I"     , "O"         , "P"          , "BACKSLASH"  ,
+        "H"              , "J"     , "K"     , "L"         , "BKSP"       , "APOSTROPHE" ,
         "N"              , "M"     , "COMMA" , "DOT"       , "SLASH"      , "RSHIFT"     ,
         "CMD"            , "ENTER" , "MINUS" , "LEFTBRACE" , "RIGHTBRACE" , "RALT"
       ]
