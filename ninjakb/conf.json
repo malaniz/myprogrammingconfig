@@ -1,38 +1,38 @@
 {
-  "device": "/dev/ttyACM0",
+  "device": "/dev/ttyACM0" ,
   "layers":[
     {
-      "name": "commands" ,
+      "name": "commands"   ,
       "left": [
-        "F1"             , "F2"    , "F3"    , "F4"        , "F5"         , "F6"         ,
-        ""               , "MB1"   , "MU"    , "MB2"       , "MB3"        , ""           ,
-        "CAPSLOCK"       , "ML"    , "MD"    , "MR"        , "MB4"        , "MB5"        ,
-        "LSHIFT"         , ""      , ""      , ""          , ""           , "BKSP"       ,
-        "LCTRL"          , "LMETA" , "LALT"  , ""          , "LEFTBRACE"  , "RIGHTBRACE"
-      ]                  ,
+        "F1"               , "F2"    , "F3"         , "F4"       , "F5"    , "F6"        ,
+        ""                 , "MB1"   , "MU"         , "MB2"      , ""      , ""          ,
+        "CAPSLOCK"         , "ML"    , "MD"         , "MR"       , ""      , ""          ,
+        "LSHIFT"           , ""      , ""           , ""         , ""      , "BKSP"      ,
+        "LCTRL"            , ""      , ""           , ""         , ""      , ""
+      ]                    ,
       "right": [
-        "F7"             , "F8"    , "F9"    , "F10"       , "F11"        , "F12"        ,
-        "HOME"           , "UP"    , "END"   , ""          , ""           , ""           ,
-        "LEFT"           , "DOWN"  , "RIGHT" , ""          , ""           , ""           ,
-        "DELETE"         , ""      , ""      , ""          , ""           , "PAGEDOWN"   ,
-        "CMD"            , ""      , ""      , ""          , ""           , "PAGEUP"
+        "F7"               , "F8"    , "F9"         , "F10"      , "F11"   , "F12"       ,
+        "LEFTBRACE"        , "UP"    , "RIGHTBRACE" , ""         , ""      , ""          ,
+        "LEFT"             , "DOWN"  , "RIGHT"      , ""         , "BKSP"  , ""          ,
+        "DELETE"           , ""      , ""           , ""         , ""      , "PAGEDOWN"  ,
+        "CMD"              , ""      , ""           , ""         , ""      , "PAGEUP"
       ]
-    }                    ,
+    }                      ,
     {
-      "name": "standard" ,
+      "name": "standard"   ,
       "left": [
-        "ESC"            , "1"     , "2"     , "3"         , "4"          , "5"          ,
-        "TAB"            , "Q"     , "W"     , "E"         , "R"          , "T"          ,
-        "GRAVE"          , "A"     , "S"     , "D"         , "F"          , "G"          ,
-        "LSHIFT"         , "Z"     , "X"     , "C"         , "V"          , "B"          ,
-        "LCTRL"          , "LMETA" , "LALT"  , "CAPSLOCK"  , "SPACE"      , "SEMICOLON"
-      ]                  ,
+        "ESC"              , "1"     , "2"          , "3"        , "4"     , "5"         ,
+        "TAB"              , "Q"     , "W"          , "E"        , "R"     , "T"         ,
+        "APOSTROPHE"       , "A"     , "S"          , "D"        , "F"     , "G"         ,
+        "LSHIFT"           , "Z"     , "X"          , "C"        , "V"     , "B"         ,
+        "LCTRL"            , "LMETA" , "LALT"       , ""         , "SPACE" , "BACKSLASH"
+      ]                    ,
       "right": [
-        "6"              , "7"     , "8"     , "9"         , "0"          , "EQUAL"      ,
-        "Y"              , "U"     , "I"     , "O"         , "P"          , "BACKSLASH"  ,
-        "H"              , "J"     , "K"     , "L"         , "BKSP"       , "APOSTROPHE" ,
-        "N"              , "M"     , "COMMA" , "DOT"       , "SLASH"      , "RSHIFT"     ,
-        "CMD"            , "ENTER" , "MINUS" , "LEFTBRACE" , "RIGHTBRACE" , "RALT"
+        "6"                , "7"     , "8"          , "9"        , "0"     , "EQUAL"     ,
+        "Y"                , "U"     , "I"          , "O"        , "P"     , "MINUS"     ,
+        "H"                , "J"     , "K"          , "L"        , "BKSP"  , "SEMICOLON" ,
+        "N"                , "M"     , "COMMA"      , "DOT"      , "SLASH" , "RSHIFT"    ,
+        "CMD"              , "ENTER" , "GRAVE"      , ""         , ""      , "RALT"
       ]
     }
   ]
