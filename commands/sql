@@ -1,3 +1,5 @@
 #!/bin/bash
 #ssh vaqaserver mysql -h qa.cnfbnfdkgiuy.us-west-2.rds.amazonaws.com -AD parking -u prod_root -psmrtguard1022
-ssh mozdev mysql -h localhost -AD beacon -u root -pmozlocal
+
+ssh local.moz.com mysql -h localhost -AD beacon -u root -pmozlocal
+#ssh mozdev mysql -h localhost -AD getlisteddb -u root -pmozlocal

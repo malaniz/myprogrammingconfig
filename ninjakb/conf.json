@@ -2,38 +2,39 @@
   "device": "/dev/ttyACM0" ,
   "layers":[
     {
-      "name": "commands"   ,
+      "name": "commands" ,
       "left": [
-        "F1"               , "F2"    , "F3"         , "F4"       , "F5"    , "F6"        ,
-        ""                 , "MB1"   , "MU"         , "MB2"      , ""      , ""          ,
-        "CAPSLOCK"         , "ML"    , "MD"         , "MR"       , ""      , ""          ,
-        "LSHIFT"           , ""      , ""           , ""         , ""      , "BKSP"      ,
-        "LCTRL"            , ""      , ""           , ""         , ""      , ""
-      ]                    ,
+        "GRAVE"          , "F1"       , "F2"        , "F3"         , "F4"        , "F5"        ,
+        ""               , "MB1"      , "MU"        , "MB2"        , ""          , ""          ,
+        "CAPSLOCK"       , "ML"       , "MD"        , "MR"         , ""          , "PAGEUP"    ,
+        "LSHIFT"         , ""         , ""          , ""           , ""          , "PAGEDOWN"  ,
+        "LCTRL"          , ""         , ""          , ""           , "PAGEUP"    , "PAGEDOWN"
+      ]                  ,
       "right": [
-        "F7"               , "F8"    , "F9"         , "F10"      , "F11"   , "F12"       ,
-        "LEFTBRACE"        , "UP"    , "RIGHTBRACE" , ""         , ""      , ""          ,
-        "LEFT"             , "DOWN"  , "RIGHT"      , ""         , "BKSP"  , ""          ,
-        "DELETE"           , ""      , ""           , ""         , ""      , "PAGEDOWN"  ,
-        "CMD"              , ""      , ""           , ""         , ""      , "PAGEUP"
+        "F6"             , "F7"       , "F8"        , "F9"         , "F10"       , "F12"       ,
+        "HOME"           , "PAGEDOWN" , "PAGEUP"    , "END"        , ""          , "F11"       ,
+        "LEFT"           , "DOWN"     , "UP"        , "RIGHT"      , ""          , "BKSP"      ,
+        "DELETE"         , ""         , ""          , ""           , ""          , ""          ,
+        "CMD"            , ""         , ""          , ""           , ""          , ""
       ]
-    }                      ,
+    }                    ,
     {
-      "name": "standard"   ,
+      "name": "standard" ,
       "left": [
-        "ESC"              , "1"     , "2"          , "3"        , "4"     , "5"         ,
-        "TAB"              , "Q"     , "W"          , "E"        , "R"     , "T"         ,
-        "APOSTROPHE"       , "A"     , "S"          , "D"        , "F"     , "G"         ,
-        "LSHIFT"           , "Z"     , "X"          , "C"        , "V"     , "B"         ,
-        "LCTRL"            , "LMETA" , "LALT"       , ""         , "SPACE" , "BACKSLASH"
-      ]                    ,
+        "ESC"            , "1"        , "2"         , "3"          , "4"         , "5"         ,
+        "TAB"            , "Q"        , "W"         , "E"          , "R"         , "T"         ,
+        "APOSTROPHE"     , "A"        , "S"         , "D"          , "F"         , "G"         ,
+        "LSHIFT"         , "Z"        , "X"         , "C"          , "V"         , "B"         ,
+        "LCTRL"          , "LMETA"    , "LALT"      , "GRAVE"      , "SPACE"     , "BACKSLASH"
+      ]                  ,
       "right": [
-        "6"                , "7"     , "8"          , "9"        , "0"     , "EQUAL"     ,
-        "Y"                , "U"     , "I"          , "O"        , "P"     , "MINUS"     ,
-        "H"                , "J"     , "K"          , "L"        , "BKSP"  , "SEMICOLON" ,
-        "N"                , "M"     , "COMMA"      , "DOT"      , "SLASH" , "RSHIFT"    ,
-        "CMD"              , "ENTER" , "GRAVE"      , ""         , ""      , "RALT"
+        "6"              , "7"        , "8"         , "9"          , "0"         , "EQUAL"     ,
+        "Y"              , "U"        , "I"         , "O"          , "P"         , "MINUS"     ,
+        "H"              , "J"        , "K"         , "L"          , "SEMICOLON" , "BKSP"      ,
+        "N"              , "M"        , "COMMA"     , "DOT"        , "SLASH"     , "RSHIFT"    ,
+        "CMD"            , "ENTER"    , "LEFTBRACE" , "RIGHTBRACE" , "RALT"      , "RCTRL"
       ]
     }
   ]
 }
+

@@ -1,6 +1,4 @@
 alias wifi='wicd-curses'
-alias pomstart="thyme -d"
-alias pombreak="thyme -b"
 alias enkb='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
 alias v=nvim
 alias vdirty='nvim $(git diff --name-only)'
@@ -17,9 +15,10 @@ alias mxn="mx new -s"
 alias mxl="mx list-session"
 alias mxa="mx attach -t"
 alias view="sxiv"
+alias today="date +%Y-%m-%d"
 
-alias tfetch="tsocks fetchmail"
-alias mail="mutt"
+alias pom="TOMATOES=8 TOMATO_TIME=25 REST_TIME=5 tmuxodoro 2&>1 /dev/null &!"
+
 alias fetch="fetchmail"
 alias pac-search="sudo pacman -Ss"
 alias pac-add="sudo pacman -S"
@@ -65,25 +64,26 @@ function mozdraft2pr () {
   DRAFT_BRANCH=$(git symbolic-ref --short -q HEAD)
   PR_BRANCH=$(echo $DRAFT_BRANCH | sed 's/DRAFT_//g')
   echo " - Copying all the changed files to tmp"
-  mkdir "/tmp/$CURRENT_BRANCH"
+  rm -rf "/tmp/$PR_BRANCH"
+  mkdir "/tmp/$PR_BRANCH"
   for x in $(git diff master --name-only)
   do
-    cp -v --parents $x "/tmp/$CURRENT_BRANCH"
+    cp -v --parents $x "/tmp/$PR_BRANCH"
   done
 
   echo " - Generating new PR Branch: $PR_BRANCH from master"
   git checkout master
   git checkout -b $PR_BRANCH
   echo " - Copying the changes to $PR_BRANCH"
-  cp -v "/tmp/$CURRENT_BRANCH/*" .
+  cp -r -v /tmp/$PR_BRANCH/* .
   echo " - Done! "
   echo " Now you need to add your changes to individual commits"
 }
 
-alias mutt-gmail='LOCAL_CONFIG=gmail /usr/bin/mutt'
-alias mutt-hack='LOCAL_CONFIG=hack /usr/bin/mutt'
-alias btm='LOCAL_CONFIG=btm /usr/bin/mutt'
-alias mutt='mairix; mutt-gmail'
+alias mgmail='MAILACC=gmail /usr/bin/neomutt'
+alias mcodel='MAILACC=codel /usr/bin/neomutt'
+alias mmoz='MAILACC=moz /usr/bin/neomutt'
+alias mail='mail-gmail'
 
 alias vv="vim -S .vimsession"
 alias torr="transmission-remote-cli"
@@ -148,6 +148,7 @@ alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
 
 #moz aliases
 alias mozdate='TZ=US/Pacific date'
+alias cldate='TZ=GMT+4 date'
 
 function mozremote() {
   ssh mozdev "source ~/.bash_profile; $1"
@@ -156,3 +157,5 @@ function mozremote() {
 
 alias pl9deploy='git push -f pl9 $(git symbolic-ref --short -q HEAD):master'
 alias kb='cat .ninjakb/conf.json'
+alias encrypt='gpg --armor --encrypt --recipient'
+alias decrypt='gpg --armor --decrypt'
