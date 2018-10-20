@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/malaniz/dev/myprogrammingconfig/termite'
-let g:netrw_dirhist_2='/home/malaniz/dev/myprogrammingconfig'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/malaniz/dev/moz/ballard/app'
+let g:netrw_dirhist_2='/home/malaniz/dev/moz/ballard/app/templates'
+let g:netrw_dirhist_3='/home/malaniz/dev/moz/ballard/app/templates/bulk'
+let g:netrw_dirhist_4='/home/malaniz/dev/moz/ballard'
+let g:netrw_dirhist_5='/home/malaniz/dev/moz/ballard/app'
+let g:netrw_dirhist_6='/home/malaniz/dev/moz/ballard/app/templates'
+let g:netrw_dirhist_7='/home/malaniz/dev/moz/ballard/app/templates/bulk'

@@ -1,12 +1,5 @@
 call plug#begin()
 
-"taskwiki
-Plug 'tbabej/taskwiki'
-Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'majutsushi/tagbar'
-Plug 'farseer90718/vim-taskwarrior'
-
-
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
@@ -16,14 +9,16 @@ Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'isRuslan/vim-es6'
 
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 "Plug 'airblade/vim-gitgutter'
+"git
+Plug 'tpope/vim-fugitive'
+"tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 " eye candy
@@ -36,9 +31,32 @@ Plug 'wavded/vim-stylus'
 " coffescript
 Plug 'mtscout6/vim-cjsx'
 Plug 'kchmck/vim-coffee-script'
+
+
 Plug 'godlygeek/tabular'
 
+" openscad syntax
+Plug 'vim-scripts/openscad.vim'
+
+" wiki
+Plug 'vimwiki/vimwiki'
+Plug 'tbabej/taskwiki'
+
+"ledger
+Plug 'ledger/vim-ledger'
+
+"Slack
+Plug 'yaasita/edit-slack.vim'
+
+"markdown preview
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()
+
+colorscheme 256_noir
+"set shellcmdflag=-ic
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='firefox'
 
 " sql for moz
 function! ExeSql()
@@ -61,6 +79,51 @@ function! ExeSql()
   let mycmd = "%! cat /tmp/sqltmp | sql 2>&1 | grep -v Warning"
   exec mycmd
 endfunction
+
+" script commands
+function! Execmd()
+  let g:sqlquery = @q
+  if g:sqlquery == ""
+    echo "no command to execute"
+    return 0
+  endif
+
+  call writefile(split(g:sqlquery, "\n"), "/tmp/cmdtmp")
+
+  if exists("g:my_run_buffer")
+    set swb=usetab
+    exec ":rightbelow sbuf " . g:my_run_buffer
+  else
+    bo new
+    set buftype=nofile
+    let g:my_run_buffer = bufnr("%")
+  endif
+  let mycmd = "%! /usr/bin/bash /tmp/cmdtmp"
+  exec mycmd
+endfunction
+
+function! ExecCoffee()
+  let g:sqlquery = @q
+  if g:sqlquery == ""
+    echo "no command to execute"
+    return 0
+  endif
+
+  call writefile(split(g:sqlquery, "\n"), "/tmp/cmdtmp")
+
+  if exists("g:my_run_buffer")
+    set swb=usetab
+    exec ":rightbelow sbuf " . g:my_run_buffer
+  else
+    bo new
+    set buftype=nofile
+    let g:my_run_buffer = bufnr("%")
+  endif
+  let mycmd = "%! coffee /tmp/cmdtmp"
+  exec mycmd
+endfunction
+
+
 
 " repl for moz
 function! ExeRepl()
@@ -129,7 +192,6 @@ set termencoding=utf-8
 set fileencoding=utf-8
 
 
-
 " All status line configuration goes here
 
 set cmdheight=1
@@ -140,13 +202,26 @@ set laststatus=2 " always show status line
 set showtabline=2 " always show tabline
 set noshowmode " hide default mode text (e.g. INSERT) as airline already displays it
 
+" for finding files recursively
+set path+=**
+set wildignore+=*/node_modules/*,*/vendor/*,*/bower_componets/:
+
+" grepping files
+if executable('ack')
+  set grepprg=ack\ -s\ -H\ --nogroup\ --nocolor\ --column
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+command! -bang -nargs=* -complete=file -bar Grep silent! grep! <args>
+" automatically open windows after searching
+autocmd QuickFixCmdPost *grep* cwindow
+
 " airline config
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1  " buffers at the top as tabs
 " let g:airline#extensions#tabline#show_tabs=0
 let g:airline#extensions#tabline#show_tab_type=0
 let g:airline#extensions#tmuxline#enabled=0
-let g:airline_theme = 'base16_pop'
+let g:airline_theme = 'minimalist'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -186,20 +261,34 @@ let g:airline#extensions#whitespace#enabled = 0
 "         \ 'z': '%R'}
 "
 
+" ledger config
+let g:ledger_maxwidth = 80
+let g:ledger_fillstring = '    -'
+let g:ledger_detailed_first = 1
+let g:ledger_fold_blanks = 0
 
 " map Leader
 let mapleader = " "
 " keep backward f search, remapping it to ,;
 " nnoremap <Leader>; ,
 
+"yaasita slack configuration
+let g:yaasita_slack_token = "xoxp-2450966270-295344054257-379825366097-d58e9261ea3bb10e46bceadbe3c260db"
+set fileencoding+=utf-8
+set encoding=utf-8
+
 " in-line scrolling
 nmap <Leader>j gj
 nmap <Leader>k gk
 
-
 "sql
 map <Leader>ss "qy:call ExeSql()<CR>
 map <Leader>rdb "qy:call ExeRepl()<CR>
+map <Leader>tt  "qy:call Execmd()<CR>
+map <Leader>cc "qy:call Execmd()<CR>
+
+" finding files
+nnoremap <Leader>ff :find<space>
 
 " buffer keys
 nnoremap <Leader>bb :b#<CR>
@@ -209,27 +298,22 @@ nnoremap <Leader>bf :bf<CR>
 nnoremap <Leader>bl :bl<CR>
 nnoremap <Leader>bw :w<CR>:bd<CR>
 nnoremap <Leader>bd :bd!<CR>
+" buffers navigation
+nnoremap <Leader>bl :ls<cr>:b<space>
+
+
 " new buffer/tab
-nnoremap <Leader>e :enew<CR>
+nnoremap <Leader>e :enew<space>
 
 " window keys
-nnoremap <Leader>w< <C-w><
-nnoremap <Leader>w> <C-w>>
-nnoremap <Leader>w- <C-w>-
-nnoremap <Leader>w+ <C-w>+
-nnoremap <Leader>ws :split<CR>
-nnoremap <Leader>wv :vsplit<CR>
+nnoremap <Leader>wh <C-w><
+nnoremap <Leader>wl <C-w>>
+nnoremap <Leader>wk <C-w>-
+nnoremap <Leader>wj <C-w>+
 nnoremap <Leader>wx :close<CR>
 
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" CtrlP keys
-nnoremap <Leader>pp :CtrlP<CR>
-nnoremap <Leader>pf :CtrlP<CR>
-nnoremap <Leader>pm :CtrlPMRUFiles<CR>
-nnoremap <Leader>pr :CtrlPMRUFiles<CR>
-nnoremap <Leader>pb :CtrlPBuffer<CR>
 
 
 " clipboard
@@ -247,5 +331,6 @@ map vp :exec "w !vpaste ft=".&ft<CR>
 vmap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
 
 " my maps
-nmap ; :
+" nmap ; :
+
 
