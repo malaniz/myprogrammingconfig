@@ -54,9 +54,9 @@ call plug#end()
 
 colorscheme 256_noir
 "set shellcmdflag=-ic
-let vim_markdown_preview_github=1
+"let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_browser='firefox'
+"let vim_markdown_preview_browser='firefox'
 
 " sql for moz
 function! ExeSql()
@@ -188,7 +188,7 @@ set ffs=unix,dos,mac
 
 " Always utf8
 set termencoding=utf-8
-" set encoding=utf-8
+"set encoding=utf-8
 set fileencoding=utf-8
 
 
@@ -274,7 +274,6 @@ let mapleader = " "
 
 "yaasita slack configuration
 let g:yaasita_slack_token = "xoxp-2450966270-295344054257-379825366097-d58e9261ea3bb10e46bceadbe3c260db"
-set fileencoding+=utf-8
 set encoding=utf-8
 
 " in-line scrolling
