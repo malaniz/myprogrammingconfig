@@ -180,7 +180,7 @@ let g:deoplete#enable_at_startup = 1
 
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+"call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 
 " Unix as standard file type

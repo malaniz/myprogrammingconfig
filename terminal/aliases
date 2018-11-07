@@ -95,7 +95,7 @@ alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
 alias fontplus='echo -e "\033]710;xft:mono:medium:size=22\033\\"'
 alias fontnormal="echo -e '\033]710;-gohu-gohufont-medium-r-normal--9-120-72-72-c-60-iso10646-1\033\\'"
 
-alias inputserver="synergys -c ~/dev/myprogrammingconfigs/synergy/synergy.conf"
+alias inputserver="synergys -c /home/malaniz/dev/myprogrammingconfig/synergy/synergy.conf"
 alias tdown="wget -P ~/tmp"
 
 function diary() {
