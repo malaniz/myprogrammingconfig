@@ -14,8 +14,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'isRuslan/vim-es6'
 
-"Plug 'kien/ctrlp.vim'
-"Plug 'airblade/vim-gitgutter'
+Plug 'kien/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
 "git
 Plug 'tpope/vim-fugitive'
 "tmux
@@ -27,13 +27,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 Plug 'wavded/vim-stylus'
+Plug 'tpope/vim-unimpaired'
+Plug 'godlygeek/tabular'
 
 " coffescript
 Plug 'mtscout6/vim-cjsx'
 Plug 'kchmck/vim-coffee-script'
-
-
-Plug 'godlygeek/tabular'
 
 " openscad syntax
 Plug 'vim-scripts/openscad.vim'
@@ -161,9 +160,20 @@ endfunction
 autocmd BufWritePost *.coffee call LintCoffee()
 
 " CtrlP
-let g:ctrlp_prompt_mappings={'PrtClearCache()':['<Leader><F5>']}
-let g:ctrlp_prompt_mappings={'PrtdeleteEnt()':['<Leader><F7>']}
 let g:ctrlp_match_window='bottom,order:btt,min:2,max:25'
+let g:ctrlp_working_path_mode = 'ra'
+"'c' - the directory of the current file.
+"'r' - the nearest ancestor that contains one of these directories or files:
+"      .git .hg .svn .bzr _darcs
+" 'a' - like c, but only if the current working directory outside of CtrlP is
+"      not a direct ancestor of the directory of the current file.
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
 set wildmenu " enhanced autocomplete
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*node_modules*,*.jpg,*.png,*.svg,*.ttf,*.woff,*.woff3,*.eot
 ",*public/css/*,*public/js*
@@ -273,7 +283,7 @@ let mapleader = " "
 " nnoremap <Leader>; ,
 
 "yaasita slack configuration
-let g:yaasita_slack_token = "xoxp-2450966270-295344054257-379825366097-d58e9261ea3bb10e46bceadbe3c260db"
+let g:yaasita_slack_token = $SLACK_TOKEN
 set encoding=utf-8
 
 " in-line scrolling
@@ -332,4 +342,10 @@ vmap vp <ESC>:exec "'<,'>w !vpaste ft=".&ft<CR>
 " my maps
 " nmap ; :
 
+"text bubbling
+nmap <C-Up> [e
+nmap <C-Down> ]e
+"bubbling multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 

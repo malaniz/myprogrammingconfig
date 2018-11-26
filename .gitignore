@@ -1,5 +1,6 @@
 nvim/plugged/*
 !nvim/plugged/dummyfile
+nvim/.netrwhist
 nvim/undodir/*
 !nvim/undodir/dummyfile
 nvim/backup/*
