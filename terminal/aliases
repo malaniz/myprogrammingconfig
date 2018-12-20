@@ -81,7 +81,7 @@ function mozdraft2pr () {
 }
 
 alias mgmail='MAILACC=gmail /usr/bin/neomutt'
-alias mcodel='MAILACC=codel /usr/bin/neomutt'
+alias mlexon='MAILACC=lexon /usr/bin/neomutt'
 alias mmoz='MAILACC=moz /usr/bin/neomutt'
 alias mail='mail-gmail'
 
@@ -154,8 +154,14 @@ function mozremote() {
   ssh mozdev "source ~/.bash_profile; $1"
 }
 
+function pmoz() {
+  pssh -i -h $1 "bash -l -c $2"
+}
 
 alias pl9deploy='git push -f pl9 $(git symbolic-ref --short -q HEAD):master'
 alias kb='cat .ninjakb/conf.json'
 alias encrypt='gpg --armor --encrypt --recipient'
 alias decrypt='gpg --armor --decrypt'
+function mfs() {
+	sshfs $1 rfs -oauto_cache,reconnect
+}

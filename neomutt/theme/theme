@@ -39,8 +39,8 @@ color tilde color243 default
 color message color246 default
 color markers color34 default
 color attachment color246 default
-color search color34 default
-color status color28 default
+color search color250 default
+color status color251 color234
 color indicator default color28
 color tree color28 default # arrow in threads
 
@@ -58,13 +58,13 @@ color index color240 default "~l~(!~N)" # messages for List
 color index color246 default "~Q" # messages that have been replied to
 color index color255 default "~v~(~F)!~N" # collapsed thread with flagged, no unread
 color index color255 default "~F" # flagged messages
-color index color40 default "~U" # unread messages
-color index color40 default "~N" # new messages
-color index color40 default "~O" # old messages
-color index color40 default "~N~p!~F" # new messages to me
-color index color40 default "~v~(~N)" # collapsed thread with some unread
-color index color40 default "~N~v~(~N)" # collapsed thread with unread parent
-color index color40 default "~v~(~F~N)" # collapsed thread with some unread & flagged
+color index color255 default "~U" # unread messages
+color index color255 default "~N" # new messages
+color index color255 default "~O" # old messages
+color index color255 default "~N~p!~F" # new messages to me
+color index color255 default "~v~(~N)" # collapsed thread with some unread
+color index color255 default "~N~v~(~N)" # collapsed thread with unread parent
+color index color255 default "~v~(~F~N)" # collapsed thread with some unread & flagged
 color index default color124 "~v~(~D)" # thread with deleted (doesn't differentiate between all or partial)
 color index default color124 "~D" # deleted messages
 
@@ -73,8 +73,8 @@ color index default color124 "~D" # deleted messages
 # message headers {{{2 ------------------------------------------------------
 
 color hdrdefault color246 default
-color header color40 default "^(From)"
-color header color40 default "^(Subject)"
+color header color255 default "^(From)"
+color header color255 default "^(Subject)"
 color header color249 default "^(X-)"
 color header color249 default "^(User-Agent)"
 
