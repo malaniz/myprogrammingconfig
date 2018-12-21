@@ -162,6 +162,6 @@ alias pl9deploy='git push -f pl9 $(git symbolic-ref --short -q HEAD):master'
 alias kb='cat .ninjakb/conf.json'
 alias encrypt='gpg --armor --encrypt --recipient'
 alias decrypt='gpg --armor --decrypt'
-function mfs() {
+function rfs() {
 	sshfs $1 rfs -oauto_cache,reconnect
 }
