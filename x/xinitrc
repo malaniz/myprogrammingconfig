@@ -1,5 +1,4 @@
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 [ $(hostname) = yoga ] && synergyc ryzen
 dunst &!
-synergy ryzen
 exec spectrwm
