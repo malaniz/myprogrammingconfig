@@ -10,5 +10,5 @@ ln -s $PWD/spectrwm/spectrwm_es.conf $HOME/.spectrwm_es.conf
 ln -s $PWD/terminal/aliases $HOME/.aliases
 ln -s $PWD/ninjakb $HOME/.ninjakb
 ln -s $PWD/commands $HOME/bin
-
-
+ln -s $PWD/x/xinitrc $HOME/.xinitrc
+ln -s $PWD/zshrc $HOME/.zshrc
