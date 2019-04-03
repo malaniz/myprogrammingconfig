@@ -81,6 +81,7 @@ function mozdraft2pr () {
 }
 
 alias mgmail='MAILACC=gmail /usr/bin/neomutt'
+alias mrsc='MAILACC=rsc /usr/bin/neomutt'
 alias mlexon='MAILACC=lexon /usr/bin/neomutt'
 alias mmoz='MAILACC=moz /usr/bin/neomutt'
 alias mail='mail-gmail'
