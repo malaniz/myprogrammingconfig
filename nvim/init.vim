@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'kshenoy/vim-signature'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
@@ -20,6 +21,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 "tmux
 Plug 'christoomey/vim-tmux-navigator'
+
+" eth
+Plug 'tomlion/vim-solidity'
 
 " eye candy
 Plug 'myusuf3/numbers.vim'

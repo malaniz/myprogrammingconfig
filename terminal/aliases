@@ -148,7 +148,7 @@ alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
 
 #moz aliases
 alias mozdate='TZ=US/Pacific date'
-alias cldate='TZ=GMT+4 date'
+alias lexdate='TZ=GMT-1 date'
 
 function mozremote() {
   ssh mozdev "source ~/.bash_profile; $1"
