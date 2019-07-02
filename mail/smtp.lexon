@@ -1,0 +1,4 @@
+set smtp_url=smtps://$MLEXON_ACCOUNT@smtp.strato.de:465/
+set smtp_pass=$MLEXON_PASSWORD
+set smtp_authenticators="gssapi:login"
+

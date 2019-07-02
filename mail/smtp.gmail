@@ -1,0 +1,5 @@
+set smtp_url=smtps://$MGMAIL_ACCOUNT@smtp.gmail.com:465/
+set smtp_pass=$MGMAIL_PASSWORD
+set smtp_authenticators="gssapi:login"
+
+

@@ -53,6 +53,12 @@ Plug 'yaasita/edit-slack.vim'
 
 "markdown preview
 Plug 'JamshedVesuna/vim-markdown-preview'
+
+"Google Translate
+Plug 'VincentCordobes/vim-translate'
+
+"Editor config
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 colorscheme 256_noir
@@ -263,6 +269,12 @@ let g:airline#extensions#tagbar#enabled     = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 
+" Google translate
+let g:translate#default_languages = {
+      \ 'es': 'en',
+      \ 'en': 'es'
+      \ }
+
 " tmuxline config
 " let g:tmuxline_preset = {
 "         \ 'a': '#S',
@@ -311,6 +323,8 @@ nnoremap <Leader>bf :bf<CR>
 nnoremap <Leader>bl :bl<CR>
 nnoremap <Leader>bw :w<CR>:bd<CR>
 nnoremap <Leader>bd :bd!<CR>
+nnoremap <c-PageDown> :bn<CR>
+nnoremap <c-PageUp> :bp<CR>
 " buffers navigation
 nnoremap <Leader>bl :ls<cr>:b<space>
 
@@ -328,6 +342,9 @@ nnoremap <Leader>wx :close<CR>
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" translate
+nnoremap <silent> <leader>t :Translate<CR>
+vnoremap <silent> <leader>t :TranslateVisual<CR>
 
 " clipboard
 set clipboard=unnamedplus
