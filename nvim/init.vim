@@ -56,6 +56,9 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 
 "Google Translate
 Plug 'VincentCordobes/vim-translate'
+
+"Editor config
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 colorscheme 256_noir
@@ -320,6 +323,8 @@ nnoremap <Leader>bf :bf<CR>
 nnoremap <Leader>bl :bl<CR>
 nnoremap <Leader>bw :w<CR>:bd<CR>
 nnoremap <Leader>bd :bd!<CR>
+nnoremap <c-PageDown> :bn<CR>
+nnoremap <c-PageUp> :bp<CR>
 " buffers navigation
 nnoremap <Leader>bl :ls<cr>:b<space>
 
