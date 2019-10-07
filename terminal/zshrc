@@ -62,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux docker node nvm tmux z)
+plugins=(git archlinux docker node nvm tmux z taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 source /home/malaniz/.aliases
@@ -101,8 +101,10 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 
-export PATH="$HOME/.yarn/bin:$HOME/go/bin/:$HOME/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/go/bin/:$HOME/bin:$PATH":$HOME/dev/tools/bin:$HOME/.local/bin
 export EDITOR="nvim"
 export SLACK_TOKEN="xoxp-2450966270-295344054257-487933431763-15bf911601f7737641fbc7d723208da0"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export GITHUB_TOKEN=5e3c37f56ef105a388d58a95c8f7568630eb4533
+export HISTTIMEFORMAT="%d/%m/%y %T "

@@ -165,3 +165,5 @@ alias decrypt='gpg --armor --decrypt'
 function rfs() {
 	sshfs $1 rfs -oauto_cache,reconnect
 }
+
+alias vnote="v ~/dev/notes/"
