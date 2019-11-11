@@ -9,6 +9,5 @@ nvim/autoload/*
 !nvim/autoload/dummyfile
 tmux/plugins/*
 !tmux/plugins/dummyfile
-
-
+nvim/.netrwbook
 
