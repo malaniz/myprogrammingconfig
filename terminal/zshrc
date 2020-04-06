@@ -101,10 +101,28 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 
-export PATH="$HOME/.yarn/bin:$HOME/go/bin/:$HOME/bin:$PATH":$HOME/dev/tools/bin:$HOME/.local/bin
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/go/bin/:$HOME/bin:"
+export PATH="$PATH:$HOME/dev/tools/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export EDITOR="nvim"
-export SLACK_TOKEN="xoxp-2450966270-295344054257-487933431763-15bf911601f7737641fbc7d723208da0"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export GITHUB_TOKEN=5e3c37f56ef105a388d58a95c8f7568630eb4533
 export HISTTIMEFORMAT="%d/%m/%y %T "
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/malaniz/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/malaniz/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/malaniz/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/malaniz/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+
+source /home/malaniz/.config/broot/launcher/bash/br

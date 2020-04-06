@@ -1,4 +1,5 @@
 alias wifi='wicd-curses'
+alias ccc='connmanctl'
 alias enkb='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
 alias v=nvim
 alias vdirty='nvim $(git diff --name-only)'
@@ -14,6 +15,7 @@ alias mx="tmux -f ~/.config/tmux/tmux.conf"
 alias mxn="mx new -s"
 alias mxl="mx list-session"
 alias mxa="mx attach -t"
+alias mux="tmuxinator"
 alias view="sxiv"
 alias today="date +%Y-%m-%d"
 

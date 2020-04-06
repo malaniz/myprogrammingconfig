@@ -11,4 +11,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+#feh --bg-fill ~/pic/IMG_20191229_194245182_PORTRAIT.jpg
+#picom &!
 exec spectrwm
+#exec dbus-launch leftwm
