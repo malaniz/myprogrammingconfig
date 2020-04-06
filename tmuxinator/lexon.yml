@@ -1,0 +1,62 @@
+# /home/malaniz/.config/tmuxinator/lexon.yml
+
+name: lexon
+root: ~/dev/lexon/orquestation
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+# Runs on project start, always
+# on_project_start: command
+# Run on project start, the first time
+# on_project_first_start: command
+# Run on project start, after the first time
+# on_project_restart: command
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+tmux_options: -f ~/.config/tmux/tmux.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - editor:
+    # layout: 6c58,240x55,0,0{140x55,0,0,22,99x55,141,0,23}
+      layout: 74b2,240x55,0,0{120x55,0,0,24,119x55,121,0[119x27,121,0,25,119x27,121,28,26]}
+      panes:
+        - cd lexon-editor && nvim -S .vim.session
+        - cd lexon-editor && ENV=development yarn start
+        - cd lexon-deployer && task next project:lexon.editor
+  - deployer:
+      layout: 74b2,240x55,0,0{120x55,0,0,24,119x55,121,0[119x27,121,0,25,119x27,121,28,26]}
+      panes:
+        - cd lexon-deployer && nvim -S .vim.session
+        - cd lexon-deployer && ENV=development npx nodemon index.js
+        - cd lexon-deployer && task next project:lexon.deployer
+  - runner:
+      layout: 74b2,240x55,0,0{120x55,0,0,24,119x55,121,0[119x27,121,0,25,119x27,121,28,26]}
+      panes:
+        - cd lexon-runner && nvim -S .vim.session
+        - cd lexon-runner && ENV=development yarn start
+        - cd lexon-runner && task next projet:lexon.runner
