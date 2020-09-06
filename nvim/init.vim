@@ -5,20 +5,17 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 
-Plug 'skywind3000/asyncrun.vim'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
+"Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-"Plug 'isRuslan/vim-es6'
 
 Plug 'kien/ctrlp.vim'
-Plug 'airblade/vim-gitgutter'
+
 "git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
 "tmux
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -34,60 +31,24 @@ Plug 'wavded/vim-stylus'
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular'
 
-" coffescript
-Plug 'mtscout6/vim-cjsx'
-Plug 'kchmck/vim-coffee-script'
-
 " openscad syntax
 Plug 'vim-scripts/openscad.vim'
-
-" wiki
-Plug 'vimwiki/vimwiki'
-Plug 'tbabej/taskwiki'
 
 "ledger
 Plug 'ledger/vim-ledger'
 
-"Slack
-Plug 'yaasita/edit-slack.vim'
-
 "markdown preview
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 
-"Google Translate
-Plug 'VincentCordobes/vim-translate'
+"typescript
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-"Editor config
-Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 colorscheme 256_noir
-"set shellcmdflag=-ic
-"let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
-"let vim_markdown_preview_browser='firefox'
-
-" sql for moz
-function! ExeSql()
-  let g:sqlquery = @q
-  if g:sqlquery == ""
-    echo "no sql to execute"
-    return 0
-  endif
-
-  call writefile(split(g:sqlquery, "\n"), "/tmp/sqltmp")
-
-  if exists("g:my_run_buffer")
-    set swb=usetab
-    exec ":rightbelow sbuf " . g:my_run_buffer
-  else
-    bo new
-    set buftype=nofile
-    let g:my_run_buffer = bufnr("%")
-  endif
-  let mycmd = "%! cat /tmp/sqltmp | sql 2>&1 | grep -v Warning"
-  exec mycmd
-endfunction
 
 " script commands
 function! Execmd()
@@ -111,63 +72,18 @@ function! Execmd()
   exec mycmd
 endfunction
 
-function! ExecCoffee()
-  let g:sqlquery = @q
-  if g:sqlquery == ""
-    echo "no command to execute"
-    return 0
-  endif
-
-  call writefile(split(g:sqlquery, "\n"), "/tmp/cmdtmp")
-
-  if exists("g:my_run_buffer")
-    set swb=usetab
-    exec ":rightbelow sbuf " . g:my_run_buffer
-  else
-    bo new
-    set buftype=nofile
-    let g:my_run_buffer = bufnr("%")
-  endif
-  let mycmd = "%! coffee /tmp/cmdtmp"
-  exec mycmd
-endfunction
-
-
-
-" repl for moz
-function! ExeRepl()
-  let g:sqlquery = @q
-  if g:sqlquery == ""
-    echo "no repl to execute"
-    return 0
-  endif
-
-  call writefile(substitute(g:sqlquery, "\n", "", ""), "/tmp/reqltmp")
-
-  if exists("g:my_run_buffer")
-    set swb=usetab
-    exec ":rightbelow sbuf " . g:my_run_buffer
-  else
-    bo new
-    set buftype=nofile
-    let g:my_run_buffer = bufnr("%")
-  endif
-  let mycmd = "%! cd /home/malaniz/dev/moz/downtown/; coffee src/rethinkstream.coffee $(cat /tmp/reqltmp)"
-  exec mycmd
-endfunction
-
 
 
 " CoffeeScript settings
-autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-autocmd FileType litcoffee runtime ftplugin/coffee.vim
-let coffee_lint_options = '-f ~/.moz/coffeelint.json'
-
-function! LintCoffee()
- :CoffeeLint! | cwindow
-endfunction
-
-autocmd BufWritePost *.coffee call LintCoffee()
+" autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+" autocmd FileType litcoffee runtime ftplugin/coffee.vim
+" let coffee_lint_options = '-f ~/.moz/coffeelint.json'
+"
+" function! LintCoffee()
+"  :CoffeeLint! | cwindow
+" endfunction
+"
+" autocmd BufWritePost *.coffee call LintCoffee()
 
 " CtrlP
 let g:ctrlp_match_window='bottom,order:btt,min:2,max:25'
@@ -208,7 +124,7 @@ set ffs=unix,dos,mac
 
 " Always utf8
 set termencoding=utf-8
-"set encoding=utf-8
+set encoding=utf-8
 set fileencoding=utf-8
 
 
@@ -269,46 +185,195 @@ let g:airline#extensions#tagbar#enabled     = 0
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 
-" Google translate
-let g:translate#default_languages = {
-      \ 'es': 'en',
-      \ 'en': 'es'
-      \ }
-
-" tmuxline config
-" let g:tmuxline_preset = {
-"         \ 'a': '#S',
-"         \ 'b': '#F',
-"         \ 'c': '#W',
-"         \ 'win': ['#I', '#W'],
-"         \ 'cwin': ['#I', '#W'],
-"         \ 'x': '#h',
-"         \ 'y': '%b %d',
-"         \ 'z': '%R'}
-"
-
 " ledger config
 let g:ledger_maxwidth = 80
 let g:ledger_fillstring = '    -'
 let g:ledger_detailed_first = 1
 let g:ledger_fold_blanks = 0
 
+" markdown config
+" plasticboy/vim-markdown
+"autocmd FileType markdown let b:sleuth_automatic=0
+"autocmd FileType markdown set conceallevel=0
+autocmd FileType markdown normal zR
+let g:vim_markdown_frontmatter=1
+
+"iamcco/markdown-preview.nvim
+let g:mkdp_resfresh_slow=1
+let g:mkdp_markdown_css='/home/malaniz/.config/nvim/github-markdown.css'
+
+"typescrypt configuration ___________________________________________________
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+
+
+
+"Mappings ___________________________________________________________________
+"
+noremap ; :
 " map Leader
 let mapleader = " "
 " keep backward f search, remapping it to ,;
 " nnoremap <Leader>; ,
-
-"yaasita slack configuration
-let g:yaasita_slack_token = $SLACK_TOKEN
-set encoding=utf-8
 
 " in-line scrolling
 nmap <Leader>j gj
 nmap <Leader>k gk
 
 "sql
-map <Leader>ss "qy:call ExeSql()<CR>
-map <Leader>rdb "qy:call ExeRepl()<CR>
 map <Leader>tt  "qy:call Execmd()<CR>
 map <Leader>cc "qy:call Execmd()<CR>
 
@@ -341,10 +406,6 @@ nnoremap <Leader>wx :close<CR>
 
 " %% to expand active buffer location on cmdline
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" translate
-nnoremap <silent> <leader>t :Translate<CR>
-vnoremap <silent> <leader>t :TranslateVisual<CR>
 
 " clipboard
 set clipboard=unnamedplus
