@@ -85,6 +85,7 @@ function mozdraft2pr () {
 alias mgmail='MAILACC=gmail /usr/bin/neomutt'
 alias mrsc='MAILACC=rsc /usr/bin/neomutt'
 alias mlexon='MAILACC=lexon /usr/bin/neomutt'
+alias mabakus='MAILACC=abakus /usr/bin/neomutt'
 alias mail='mgmail'
 
 alias vv="vim -S .vimsession"
@@ -94,8 +95,6 @@ alias netup="sudo dhcpcd enp0s20u1u2"
 alias macfs="sshfs mac:dev ~/mac"
 alias smartbell='ssh -t mac "cd Desktop/dev/smartbell; zsh"'
 alias tiempo="curl http://wttr.in/la-punta,san-luis,argentina"
-alias fontplus='echo -e "\033]710;xft:mono:medium:size=22\033\\"'
-alias fontnormal="echo -e '\033]710;-gohu-gohufont-medium-r-normal--9-120-72-72-c-60-iso10646-1\033\\'"
 
 alias inputserver="synergys -c /home/malaniz/dev/myprogrammingconfig/synergy/synergy.conf"
 alias tdown="wget -P ~/tmp"
