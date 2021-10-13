@@ -38,7 +38,6 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 
->>>>>>> 19d874956292d238a6a838e57abc1b0fed75037e
 " openscad syntax
 Plug 'vim-scripts/openscad.vim'
 
