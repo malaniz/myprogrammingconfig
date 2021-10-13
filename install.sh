@@ -25,6 +25,6 @@ ORIG=$PWD/terminal/aliases          && LINK=$HOME/.aliases           && installi
 ORIG=$PWD/ninjakb                   && LINK=$HOME/.ninjakb           && installit $ORIG $LINK
 ORIG=$PWD/commands                  && LINK=$HOME/bin                && installit $ORIG $LINK
 ORIG=$PWD/x/xinitrc                 && LINK=$HOME/.xinitrc           && installit $ORIG $LINK
-ORIG=$PWD/zshrc                     && LINK=$HOME/.zshrc             && installit $ORIG $LINK
+ORIG=$PWD/terminal/zshrc            && LINK=$HOME/.zshrc             && installit $ORIG $LINK
 ORIG=$PWD/mail                      && LINK=$HOME/.config/mail       && installit $ORIG $LINK
 ORIG=$PWD/mail/muttrc               && LINK=$HOME/.muttrc            && installit $ORIG $LINK

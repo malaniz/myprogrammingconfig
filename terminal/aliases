@@ -166,7 +166,7 @@ alias kb='cat .ninjakb/conf.json'
 alias encrypt='gpg --armor --encrypt --recipient'
 alias decrypt='gpg --armor --decrypt'
 function rfs() {
-	sshfs $1 rfs -oauto_cache,reconnect
+	sshfs $1 ~/rfs -oauto_cache,reconnect
 }
 
 alias vnote="v ~/dev/notes/"
