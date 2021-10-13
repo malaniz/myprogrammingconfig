@@ -1,10 +1,13 @@
 call plug#begin()
 Plug 'xarthurx/taskwarrior.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'kien/ctrlp.vim'
+
+Plug 'editorconfig/editorconfig-vim'
 
 "git
 Plug 'airblade/vim-gitgutter'
@@ -25,6 +28,9 @@ Plug 'lilydjwg/colorizer', { 'on': 'ColorToggle' }
 Plug 'wavded/vim-stylus'
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular'
+
+" Vue
+Plug 'posva/vim-vue'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
