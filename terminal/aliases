@@ -37,6 +37,7 @@ alias penoff="xinput disable 16"
 alias penoon="xinput enable 16"
 
 #git aliasses
+alias git="hub"
 alias gadd="git add"
 alias gdel-all-branchs='git branch --merged | egrep -v "(^\*|master|develop)" | xargs git branch -d'
 alias gcam="git commit -am"
