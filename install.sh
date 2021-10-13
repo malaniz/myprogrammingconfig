@@ -21,10 +21,10 @@ ORIG=$PWD/dunst                     && LINK=$HOME/.config/dunst      && installi
 ORIG=$PWD/rofi                      && LINK=$HOME/.config/rofi       && installit $ORIG $LINK
 ORIG=$PWD/spectrwm/spectrwm.conf    && LINK=$HOME/.spectrwm.conf     && installit $ORIG $LINK
 ORIG=$PWD/spectrwm/spectrwm_es.conf && LINK=$HOME/.spectrwm_es.conf  && installit $ORIG $LINK
+ORIG=$PWD/terminal/zshrc            && LINK=$HOME/.zshrc             && installit $ORIG $LINK
 ORIG=$PWD/terminal/aliases          && LINK=$HOME/.aliases           && installit $ORIG $LINK
 ORIG=$PWD/ninjakb                   && LINK=$HOME/.ninjakb           && installit $ORIG $LINK
 ORIG=$PWD/commands                  && LINK=$HOME/bin                && installit $ORIG $LINK
 ORIG=$PWD/x/xinitrc                 && LINK=$HOME/.xinitrc           && installit $ORIG $LINK
-ORIG=$PWD/terminal/zshrc            && LINK=$HOME/.zshrc             && installit $ORIG $LINK
 ORIG=$PWD/mail                      && LINK=$HOME/.config/mail       && installit $ORIG $LINK
 ORIG=$PWD/mail/muttrc               && LINK=$HOME/.muttrc            && installit $ORIG $LINK
