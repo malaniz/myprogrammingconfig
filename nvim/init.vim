@@ -52,6 +52,7 @@ Plug 'yaasita/edit-slack.vim'
 call plug#end()
 
 colorscheme 256_noir
+let g:mkdp_path_to_chrome = "firefox"
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 0
