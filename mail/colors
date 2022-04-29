@@ -31,7 +31,7 @@ color error       color167 color234
 color hdrdefault  color246 color234
 color indicator   color252 color235
 color markers     color243 color234
-color normal      color240 black
+color normal      default default
 color quoted      color250 color234
 color quoted1     color246 color234
 color quoted2     color250 color234
@@ -48,40 +48,40 @@ color underline   color223 color239
 color sidebar_divider    color245 color234
 color sidebar_new        color142 color234
 
-color index color252 black ~N
-color index color247 black ~O
-color index color247 black ~P
-color index color247 black ~F
-color index color247 black ~Q
-color index color247 black ~=
-color index black color245 ~T
+color index color252 default ~N
+color index color247 default ~O
+color index color247 default ~P
+color index color247 default ~F
+color index color247 default ~Q
+color index color247 default ~=
+color index default color245 ~T
 color index color245 color238 ~D
 
-color header color240 black "^(To:|From:)"
-color header color242 black "^Subject:"
-color header color108 black "^X-Spam-Status:"
-color header color108 black "^Received:"
+color header color240 default "^(To:|From:)"
+color header color242 default "^Subject:"
+color header color108 default "^X-Spam-Status:"
+color header color108 default "^Received:"
 
-color body color245 black "[a-z]{3,256}://[-a-zA-Z0-9@:%._\\+~#=/?&,]+"
+color body color245 default "[a-z]{3,256}://[-a-zA-Z0-9@:%._\\+~#=/?&,]+"
 #color body color142 color234 "[a-zA-Z]([-a-zA-Z0-9_]+\\.){2,256}[-a-zA-Z0-9_]{2,256}"
-color body color208 black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
-color body color240 black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
-color body color234 black "[;:]-*[)>(<lt;|]"
-color body color229 black "\\*[- A-Za-z]+\\*"
+color body color208 default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color body color240 default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body color234 default "[;:]-*[)>(<lt;|]"
+color body color229 default "\\*[- A-Za-z]+\\*"
 
-color body color214 black "^-.*PGP.*-*"
-color body color142 black "^gpg: Good signature from"
-color body color167 black "^gpg: Can't.*$"
-color body color214 black "^gpg: WARNING:.*$"
-color body color167 black "^gpg: BAD signature from"
-color body color167 black "^gpg: Note: This key has expired!"
-color body color214 black "^gpg: There is no indication that the signature belongs to the owner."
-color body color214 black "^gpg: can't handle these multiple signatures"
-color body color214 black "^gpg: signature verification suppressed"
-color body color214 black "^gpg: invalid node with packet of type"
+color body color214 default "^-.*PGP.*-*"
+color body color142 default "^gpg: Good signature from"
+color body color167 default "^gpg: Can't.*$"
+color body color214 default "^gpg: WARNING:.*$"
+color body color167 default "^gpg: BAD signature from"
+color body color167 default "^gpg: Note: This key has expired!"
+color body color214 default "^gpg: There is no indication that the signature belongs to the owner."
+color body color214 default "^gpg: can't handle these multiple signatures"
+color body color214 default "^gpg: signature verification suppressed"
+color body color214 default "^gpg: invalid node with packet of type"
 
 
-color compose header            color223 black
+color compose header            color223 default
 color compose security_encrypt  color175 color234
 color compose security_sign     color109 color234
 color compose security_both     color142 color234
