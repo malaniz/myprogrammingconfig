@@ -104,6 +104,7 @@ source /usr/bin/virtualenvwrapper.sh
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/go/bin/:$HOME/bin:"
 export PATH="$PATH:$HOME/dev/tools/bin:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin"
 
 export NODE_OPTIONS=--openssl-legacy-provider
 export ANDROID_HOME=$HOME/Android/Sdk

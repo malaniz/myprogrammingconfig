@@ -1,7 +1,7 @@
 call plug#begin()
 Plug 'xarthurx/taskwarrior.vim'
 Plug 'skywind3000/asyncrun.vim'
-
+Plug 'itchyny/calendar.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -678,3 +678,6 @@ let g:ale_fix_on_save = 1
 
 nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
 nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
+
+
+let g:calendar_google_calendar = 1

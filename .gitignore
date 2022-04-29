@@ -13,4 +13,5 @@ nvim/.netrwbook
 
 nvim/pack
 commands/Telegram
+commands/Updater
 commands/ack

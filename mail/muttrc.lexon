@@ -1,7 +1,7 @@
 #======================================================#
 # Boring details
 set realname = "Marcelo Alaniz"
-set from = "marcelo.alaniz@lexon.tech"
+set from = "malaniz@lexon.digital"
 set use_from = yes
 set envelope_from ="yes"
 
@@ -11,8 +11,8 @@ set signature="./sign.lexon"
 # ============================================== #
 # Folders                                        #
 set mbox_type = Maildir
-set spoolfile = "/home/malaniz/.mail/marceloalanizATlexon" #
-set folder    = "/home/malaniz/.mail/marceloalanizATlexon" # Local mailboxes stored here
+set spoolfile = "/home/malaniz/.mail/malanizATlexonD" #
+set folder    = "/home/malaniz/.mail/malanizATlexonD" # Local mailboxes stored here
 set mask      = "!^\\.[^.]"                      #
 set record    = "+sent"                          # Where to store sent messages
 set postponed = "+postponed"                     # Where to store draft messages

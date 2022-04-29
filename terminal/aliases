@@ -1,3 +1,4 @@
+alias bigres='xrandr --output eDP1 --primary --mode 1368x768'
 alias wifi='wicd-curses'
 alias ccc='connmanctl'
 alias enkb='setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl'
@@ -18,6 +19,8 @@ alias mxa="mx attach -t"
 alias mux="tmuxinator"
 alias view="sxiv"
 alias today="date +%Y-%m-%d"
+alias datefix="sudo ntpdate pool.ntp.org"
+alias kal="khal"
 
 alias pom="TOMATOES=8 TOMATO_TIME=25 REST_TIME=5 tmuxodoro 2&>1 /dev/null &!"
 
@@ -26,12 +29,10 @@ alias pac-search="sudo pacman -Ss"
 alias pac-add="sudo pacman -S"
 alias pac-rm="sudo pacman -Rs"
 alias tpac="sudo tsocks pacman"
-alias back50="xbacklight --set 50"
-alias back100="xbacklight --set 100"
+alias back50="xbacklight -set 50"
+alias back100="xbacklight -set 100"
 alias ptop="sudo powertop"
 alias notouch="synclient TouchpadOff=1"
-alias android-connect="go-mtpfs ~/nexus"
-alias android-disconnect="fusermount -u ~/nexus"
 alias state="watch --interval=5 acpi -V"
 alias penoff="xinput disable 16"
 alias penoon="xinput enable 16"
@@ -174,3 +175,5 @@ function cdp() {
   cd ~/dev/$devproj
   tmuxinator $1
 }
+
+alias whiteterm="kitty -c ~/.config/kitty/kitty-white.conf"
