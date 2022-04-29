@@ -11,3 +11,6 @@ tmux/plugins/*
 !tmux/plugins/dummyfile
 nvim/.netrwbook
 
+nvim/pack
+commands/Telegram
+commands/ack
